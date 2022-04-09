@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Semana"
+  },
+  "description": {
+    "message": "Muestra el número de la semana en la barra de herramientas."
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"extName": {
+		"message": "Week"
+	},
+	"description": {
+		"message": "Show current week number in toolbar."
+	}
+}
