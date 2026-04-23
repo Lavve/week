@@ -6,11 +6,11 @@
   const extNameEl = document.querySelector("#ext-name");
   const versionEl = document.querySelector(".version");
 
-  const currentWeek = getIsoWeekNumber();
   if (!weekParagraph) {
     return;
   }
 
+  const currentWeek = getIsoWeekNumber();
   weekParagraph.textContent = String(currentWeek);
 
   if (extNameEl) {
