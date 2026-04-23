@@ -47,7 +47,7 @@ body.popup {
 
 body.popup #week {
   line-height: 1;
-  font-size: clamp(6.25rem, 16vw, 5rem);
+  font-size: 5rem;
   text-shadow: -4px 4px 4px var(--shadow-color);
   text-align: center;
   position: relative;
