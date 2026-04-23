@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: MuseoModerno;
-  src: url(MuseoModerno.ttf?ok8jkag) format("truetype");
+  src: url(MuseoModerno.woff2?ok8jkag) format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -22,7 +22,7 @@
 html,
 body.popup {
   width: 320px;
-  min-height: 196px;
+  min-height: 180px;
   font-family: MuseoModerno, Arial, sans-serif;
   background: #7dab13;
   background: linear-gradient(to bottom, #a9d607 0, #53801f 100%);
@@ -38,28 +38,19 @@ body.popup {
   padding: var(--popup-pad);
 }
 
-.popup-content {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 6.5rem;
+.ext-name {
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-shadow: -2px 2px 2px var(--shadow-color);
 }
 
-/* Stor siffra, skala till popup-fönstret (ingen vh) */
 body.popup #week {
   line-height: 1;
   font-size: clamp(6.25rem, 16vw, 5rem);
-  text-shadow: -8px 8px 8px var(--shadow-color);
+  text-shadow: -4px 4px 4px var(--shadow-color);
   text-align: center;
   position: relative;
-}
-
-.ext-name {
-  text-align: center;
-  font-size: 0.7rem;
-  opacity: 0.95;
-  letter-spacing: 0.02em;
 }
 
 .popup-footer {
