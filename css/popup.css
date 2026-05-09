@@ -1,90 +1,209 @@
-/* Popup: kompakt yta, samma färger/typsnitt som helsidesläget (week.css) */
+/* Popup: modernized low-specificity styles */
 
 :root {
-  --shadow-color: rgba(0, 0, 0, 0.25);
-  --popup-pad: 0.75rem;
+	--popup-width: 180px;
+	--popup-height: 210px;
+	--shadow-color: rgb(0 0 0 / 25%);
+	--text-color: #fff;
+	--text-color-soft: #efefef;
+	--dimmed-text-color: #dedede;
+	--background-color: #4d6103;
+	--background-gradient-start: #688404;
+	--background-gradient-end: #1d2c0b;
+	--surface-border-color: rgb(255 255 255 / 20%);
+	--ring-gradient-start: #fff;
+	--ring-gradient-end: #939393;
+	--ring-border-color: #000;
+	--ring-border-width: 4px;
+	--ring-radius: 9px;
+	--radius-sm: 0.25rem;
+	--popup-pad: 0.75rem;
+	--space-2xs: 0.25rem;
+	--space-xs: 0.35rem;
+	--space-sm: 0.5rem;
+	--text-xs: 0.65rem;
+	--text-sm: 0.85rem;
+	--text-md: 1rem;
+	--week-number-size: 6.5rem;
+	--ring-focus-offset: 2px;
+	--focus-ring: 2px solid rgb(255 255 255 / 70%);
 }
 
 @font-face {
-  font-family: MuseoModerno;
-  src: url(MuseoModerno.woff2?ok8jkag) format("woff2");
-  font-weight: 400;
-  font-style: normal;
+	font-family: MuseoModerno;
+	src: url(MuseoModerno.woff2?ok8jkag) format("woff2");
+	font-weight: 400;
+	font-style: normal;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  box-sizing: border-box;
+:where(*, *::before, *::after) {
+	box-sizing: border-box;
 }
 
-html,
-body.popup {
-  width: 180px;
-  height: 180px;
-  font-family: MuseoModerno, Arial, sans-serif;
-  background: #4D6103;
-  background: linear-gradient(to bottom, #688404 0, #1d2c0b 100%);
-  color: #fff;
-  user-select: none;
-  overflow: hidden;
+:where(html, body.popup) {
+	inline-size: var(--popup-width);
+	block-size: var(--popup-height);
+	margin: 0;
+	padding: 0;
 }
 
 body.popup {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: stretch;
-  padding: var(--popup-pad);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	font-family: MuseoModerno, Arial, sans-serif;
+	color: var(--text-color);
+	user-select: none;
+	overflow: hidden;
+	background: linear-gradient(
+		180deg,
+		var(--background-gradient-start) 0,
+		var(--background-gradient-end) 90%
+	);
+	padding-inline: var(--popup-pad);
+	padding-block: var(--popup-pad) calc(var(--popup-pad) / 2);
+	border: var(--ring-border-width) solid var(--ring-border-color);
 }
 
-body.popup i {
-  position: absolute;
-  top: -5px;
-  left: 15%;
-  display: inline-block;
-  width: 15%;
-  height: 20%;
-  background: #939393;
-  background: linear-gradient(to bottom, #ffffff 0, #939393 100%);
-  border: 4px solid #000;
-  border-radius: 0 0 9px 9px;
+:where(body.popup) i {
+	position: absolute;
+	inset-block-start: -4px;
+	inset-inline-start: 15%;
+	display: inline-block;
+	inline-size: 15%;
+	block-size: 15%;
+	background: linear-gradient(
+		to bottom,
+		var(--ring-gradient-start) 0,
+		var(--ring-gradient-end) 100%
+	);
+	border: var(--ring-border-width) solid var(--ring-border-color);
+	border-top: none;
+	border-radius: 0 0 var(--ring-radius) var(--ring-radius);
 
-  &:nth-child(1) {
-    left: 70%;
-  }
+	&:nth-child(1) {
+		inset-inline-start: 70%;
+	}
 }
 
-.ext-name {
-  text-align: center;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  text-shadow: -2px 2px 2px var(--shadow-color);
+:where(#week-container, #settings-container) {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-body.popup #week {
-  line-height: 1;
-  font-size: 6.5rem;
-  text-shadow: -4px 4px 4px var(--shadow-color);
-  text-align: center;
-  position: relative;
+:where(#week-container) {
+	display: flex;
 }
 
-.popup-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  font-size: 0.65rem;
-  opacity: 0.8;
-  margin-top: auto;
-  padding-top: 0.35rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+:where(#settings-container) {
+	display: none;
 }
 
-.version {
-  white-space: nowrap;
-  font-style: normal;
-  opacity: 0.7;
+:where(.ext-name) {
+	text-align: center;
+	font-size: var(--text-md);
+	letter-spacing: 0.02em;
+	margin: 0;
+	text-shadow: -2px 2px 2px var(--shadow-color);
+}
+
+:where(#week) {
+	position: relative;
+	margin: 0 0 0.5rem;
+	line-height: 1;
+	font-size: var(--week-number-size);
+	text-align: center;
+	text-shadow: -4px 4px 4px var(--shadow-color);
+}
+
+:where(#date) {
+	line-height: 1;
+	margin: 0;
+	font-size: var(--text-sm);
+	color: var(--dimmed-text-color);
+	text-shadow: -2px 2px 2px var(--shadow-color);
+	text-align: center;
+}
+
+:where(label) {
+	display: flex;
+	flex-grow: 1;
+	inline-size: 100%;
+	font-size: var(--text-sm);
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: calc(var(--popup-pad) * 2);
+	gap: var(--space-2xs);
+}
+
+:where(label .popup-label) {
+	margin: 0;
+}
+
+:where(.popup-select) {
+	inline-size: 100%;
+	padding: var(--space-sm) var(--space-2xs);
+	border: 2px solid var(--text-color-soft);
+	border-radius: var(--radius-sm);
+	color: var(--text-color);
+	font-weight: 700;
+	background: transparent;
+
+	& option {
+		color: var(--text-color);
+		background: var(--background-color);
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--ring-focus-offset);
+	}
+}
+
+:where(.popup-footer) {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-sm);
+	margin-top: auto;
+	padding-top: var(--space-xs);
+	font-size: var(--text-xs);
+	opacity: 0.8;
+	border-top: 1px solid var(--surface-border-color);
+}
+
+:where(.popup-footer-button) {
+	padding: 0;
+	border: none;
+	cursor: pointer;
+	background: none;
+	color: var(--dimmed-text-color);
+	transition: 0.23s;
+
+	& .popup-footer-button-icon {
+		fill: currentcolor;
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--ring-focus-offset);
+		border-radius: calc(var(--radius-sm) - 0.05rem);
+	}
+
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
+:where(#back-icon) {
+	display: none;
+}
+
+:where(.version) {
+	white-space: nowrap;
+	font-style: normal;
+	opacity: 0.7;
 }
