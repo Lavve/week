@@ -1,0 +1,15 @@
+{
+  "name": "week",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "zip": "node zip.mjs",
+    "build:zip": "npm run build && npm run zip"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "esbuild": "^0.25.5",
+    "html-minifier-terser": "^7.2.0"
+  }
+}

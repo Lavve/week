@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "files": {
-    "includes": ["**"]
+    "includes": ["**", "!!dist", "!!week.zip"]
   },
   "formatter": {
     "enabled": true,
@@ -17,7 +17,7 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "semicolons": "asNeeded"
+      "semicolons": "always"
     }
   }
 }

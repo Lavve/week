@@ -1,2 +1,5 @@
 manifest.json
 debug.log
+node_modules/
+dist/
+week.zip
