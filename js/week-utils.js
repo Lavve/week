@@ -2,7 +2,6 @@
  * Shared date utility for ISO week number.
  * Week 1 is the week containing the first Thursday of the year.
  */
-// biome-ignore lint/correctness/noUnusedVariables: false positive
 function getIsoWeekNumber(date = new Date()) {
   const workingDate = new Date(date)
   const mondayIndex = (workingDate.getDay() + 6) % 7
@@ -18,7 +17,6 @@ function getIsoWeekNumber(date = new Date()) {
   return 1 + Math.ceil((currentThursday - firstThursday) / 604800000)
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: false positive
 function getDateString(format = 'DD/MM/YYYY', date = new Date()) {
   const day = String(date.getDate()).padStart(2, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -31,4 +29,14 @@ function getDateString(format = 'DD/MM/YYYY', date = new Date()) {
   }
 
   return format.replace(/DD|MM|YYYY/g, (token) => tokenValues[token] || token)
+}
+
+function getDateRangeString(format = 'DD/MM/YYYY', date = new Date()) {
+  const startDate = new Date(date)
+  startDate.setDate(startDate.getDate() - startDate.getDay() + 1)
+  const endDate = new Date(date)
+  endDate.setDate(endDate.getDate() - endDate.getDay() + 7)
+  const formattedStartDate = getDateString(format, startDate)
+  const formattedEndDate = getDateString(format, endDate)
+  return `${formattedStartDate} - ${formattedEndDate}`
 }

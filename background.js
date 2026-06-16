@@ -11,14 +11,12 @@ async function createWeekIconImageData(weekNumber, iconSize) {
     throw new Error('Could not acquire 2D context for icon rendering.')
   }
 
-  // Base card gradient.
   const backgroundGradient = context.createLinearGradient(0, 0, 0, iconSize)
   backgroundGradient.addColorStop(0, '#688404')
   backgroundGradient.addColorStop(1, '#1d2c0b')
   context.fillStyle = backgroundGradient
   context.fillRect(0, 0, iconSize, iconSize)
 
-  // Calendar "rings" at top.
   const ringWidth = iconSize * 0.16
   const ringHeight = iconSize * 0.18
   const leftRingX = iconSize * 0.22
@@ -34,7 +32,6 @@ async function createWeekIconImageData(weekNumber, iconSize) {
   context.strokeRect(leftRingX, 0, ringWidth, ringHeight)
   context.strokeRect(rightRingX, 0, ringWidth, ringHeight)
 
-  // Week number text.
   const fontSize = iconSize * 0.7
   const textY = iconSize * 0.62
   context.textAlign = 'center'

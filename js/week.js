@@ -1,6 +1,3 @@
-/**
- * Popup-logik: visar aktuellt ISO-veckonummer i popup-vyn.
- */
 ;(() => {
   const DATE_FORMAT_STORAGE_KEY = 'dateFormat'
   const DEFAULT_DATE_FORMAT = 'DD/MM/YYYY'
@@ -13,6 +10,7 @@
   const popupFooterButton = document.querySelector('.popup-footer-button')
   const popupSelect = document.querySelector('.popup-select')
   const dateEl = document.querySelector('#date')
+  const dateRangeEl = document.querySelector('#date-range')
   const settingsIcon = document.querySelector('#settings-icon')
   const backIcon = document.querySelector('#back-icon')
 
@@ -38,6 +36,13 @@
     dateEl.textContent = getDateString(popupSelect.value)
   }
 
+  const updateDateRange = () => {
+    if (!dateRangeEl || !popupSelect) {
+      return
+    }
+    dateRangeEl.textContent = getDateRangeString(popupSelect.value)
+  }
+
   const loadSavedDateFormat = async () => {
     if (!popupSelect) {
       return
@@ -54,6 +59,7 @@
     }
 
     updateDate()
+    updateDateRange()
   }
 
   const setView = (showSettings) => {
@@ -81,6 +87,7 @@
       }
 
       updateDate()
+      updateDateRange()
       setView(false)
     })
   }
